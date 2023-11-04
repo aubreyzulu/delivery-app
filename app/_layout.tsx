@@ -1,5 +1,6 @@
 import CustomHeader from '@/components/CustomHeader';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import {
   DarkTheme,
   DefaultTheme,
@@ -52,13 +53,14 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{ header: () => <CustomHeader /> }}
-        />
-        {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
-      </Stack>
+      <BottomSheetModalProvider>
+        <Stack>
+          <Stack.Screen
+            name="index"
+            options={{ header: () => <CustomHeader /> }}
+          />
+        </Stack>
+      </BottomSheetModalProvider>
     </ThemeProvider>
   );
 }
